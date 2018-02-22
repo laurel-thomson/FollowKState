@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:id="@+id/linearLayout">
+        <ImageView
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:id="@+id/profile_pic"/>
+
+        <TextView
+            android:id="@+id/tweet_content"
+            android:layout_width="fill_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="10dp"
+            android:text="In West Philadelphia, born and raised On the playground is where I spent most of my days Chillin' out, maxin', relaxin' all cool And all shootin' some b-ball outside of the school When a couple of guys who were up to no good Started makin' trouble in my neighborhood"
+            android:textSize="11dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:layout_below="@+id/linearLayout"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retweets: "
+            android:paddingLeft="80dp"
+            android:textSize="11dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="25dp"
+            android:text="10"
+            android:textSize="11dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Likes:"
+            android:paddingLeft="50dp"
+            android:textSize="11dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11dp"
+            android:text="20"
+            android:paddingLeft="10dp"/>
+    </LinearLayout>
+</RelativeLayout>
