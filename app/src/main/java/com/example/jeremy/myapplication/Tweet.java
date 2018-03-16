@@ -2,6 +2,8 @@ package com.example.jeremy.myapplication;
 
 import java.util.Date;
 
+//This class represents a Tweet.  It models an object in the real world.
+
 public class Tweet {
 
     public String mAuthor;
