@@ -16,6 +16,11 @@ public class Tweet {
     public boolean mIsRetweet;
     public String mProfilePictureUrl;
 
+    public Tweet(String author, String text) {
+        mAuthor = author;
+        mText = text;
+    }
+
     public Tweet(String author,
                  String text,
                  Date date,

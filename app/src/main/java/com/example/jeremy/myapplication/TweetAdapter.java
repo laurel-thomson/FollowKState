@@ -7,18 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import java.util.List;
 
-
-/**
- * Created by brummerjd on 2/22/18.
- */
-    public class TweetAdapter extends ArrayAdapter<Tweet>
-{
+public class TweetAdapter extends ArrayAdapter<Tweet> {
 
     public TweetAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Tweet> objects) {
         super(context, resource, objects);
