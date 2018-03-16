@@ -1,35 +1,63 @@
 package com.example.jeremy.myapplication;
 
 import android.app.Activity;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.CheckBox;
-import android.widget.CheckedTextView;
+import android.util.Log;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 public class SettingsActivity extends Activity {
 
+    private final int CODE_USERS_OBTAINED = 1001;
+    private ArrayList<User> mUsers;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        ListView userLV = findViewById(R.id.settings_listview);
-        ArrayList<String> users = new ArrayList<String>();
-        users.add("@KState");
-        users.add("@KStateRugby");
-        users.add("@Dane");
-        users.add("@Danes_dog");
+        new RetrieveUsersTask().execute();
 
-        UserAdapter adapter = new UserAdapter(this, R.layout.user_item_layout, users);
-
-        userLV.setAdapter(adapter);
     }
+
+
+        @Override
+        protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+            super.onActivityResult(requestCode, resultCode, data);
+            switch (requestCode) {
+                case CODE_USERS_OBTAINED:
+                    ListView userLV = findViewById(R.id.settings_listview);
+                    UserAdapter adapter = new UserAdapter(this, R.layout.user_item_layout, mUsers);
+                    userLV.setAdapter(adapter);
+            }
+        }
+
+        class RetrieveUsersTask extends AsyncTask<String, Void, String> {
+
+            protected void onPreExecute() {
+                //mProgressBar.setVisibility(View.VISIBLE);
+            }
+
+            protected String doInBackground(String... urls) {
+                try {
+                    mUsers = TwitterClient.getUsers();
+                } catch (Exception e) {
+                    Log.e("ERROR", "Error retrieving users: " + e.getMessage());
+                }
+                return "";
+            }
+
+            protected void onPostExecute(String response) {
+                if(response == null) {
+                    response = "THERE WAS AN ERROR";
+                }
+                //mProgressBar.setVisibility(View.GONE);
+                //Log.i("INFO", response);
+
+                // Use ActivityResult to notify main thread that tweets have been obtains (shouldn't update UI in ASync task)
+                onActivityResult(CODE_USERS_OBTAINED, -1, null);
+            }
+        }
 }

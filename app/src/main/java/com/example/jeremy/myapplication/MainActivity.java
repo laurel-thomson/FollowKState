@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case CODE_TWEETS_OBTAINED:
+
+
                 TweetAdapter tweetyBird = new TweetAdapter(this, 0, mTweets);
                 ListView Whateveryouwant = (ListView) findViewById(R.id.listview);
                 Whateveryouwant.setAdapter(tweetyBird);
@@ -61,5 +63,7 @@ public class MainActivity extends AppCompatActivity {
             onActivityResult(CODE_TWEETS_OBTAINED, -1, null);
         }
     }
+
+
 }
 

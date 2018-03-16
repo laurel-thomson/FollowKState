@@ -1,6 +1,7 @@
 package com.example.jeremy.myapplication;
 
 import android.os.Build;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,22 +24,18 @@ public class TwitterClient {
     private final static String ACCOUNT_NAME = "KState";
     private final static int NUM_TWEETS = 20;
 
-    private static String sTwitterURL = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%d";
+    private static String sTweetURL = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%d";
+    private static String sUsersURL = "https://api.twitter.com/1.1/friends/list.json?screen_name=%s";
 
-    public static ArrayList<Tweet> getTweets() throws IOException {
+    public static ArrayList<Tweet> getTweets() {
 
         HttpsURLConnection connection = null;
 
         try {
-            URL url = new URL(String.format(sTwitterURL, ACCOUNT_NAME, NUM_TWEETS));
+            URL url = new URL(String.format(sTweetURL, ACCOUNT_NAME, NUM_TWEETS));
 
-            connection = (HttpsURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
-            connection.setRequestProperty("Authorization", "Bearer " + TOKEN);
 
-            disableConnectionReuseIfNecessary();
-
-            JSONArray objs = (JSONArray) JSONValue.parse(readResponse(connection));
+            JSONArray objs = (JSONArray) getJSONFromURL(url);
 
             if (objs != null) {
                 ArrayList<Tweet> tweets = new ArrayList<Tweet>();
@@ -46,7 +43,7 @@ public class TwitterClient {
                 // Loop through each JSONObject, get Tweet data from it, and create a Tweet to add to the list
                 for (int i = 0; i < objs.size(); i++) {
                     JSONObject tweetObj = (JSONObject) objs.get(i);
-                    String author = ((JSONObject)tweetObj.get("user")).get("name").toString();
+                    String author = ((JSONObject) tweetObj.get("user")).get("name").toString();
                     String text = tweetObj.get("text").toString();
 
                     tweets.add(new Tweet(author, text));
@@ -54,6 +51,57 @@ public class TwitterClient {
 
                 return tweets;
             }
+        }
+        catch (Exception e)
+        {
+            return null;
+        }
+        return null;
+    }
+
+    public static ArrayList<User> getUsers() {
+
+        HttpsURLConnection connection = null;
+
+        try {
+            URL url = new URL(String.format(sUsersURL, ACCOUNT_NAME));
+
+            JSONArray objs = (JSONArray)((JSONObject)getJSONFromURL(url)).get("users");
+
+            if (objs != null) {
+                ArrayList<User> users = new ArrayList<User>();
+
+                // Loop through each JSONObject, get Tweet data from it, and create a Tweet to add to the list
+                for (int i = 0; i < objs.size(); i++) {
+                    String handle = ((JSONObject)objs.get(i)).get("screen_name").toString();
+                    users.add(new User(handle));
+                    //String handle = ((JSONArray) userObj.get("users")).get("screen_name").toString();
+
+                    //users.add(new User(handle));
+                }
+
+                return users;
+            }
+        }
+        catch (Exception e)
+        {
+            Log.e("ERROR", "Error retrieving users: " + e.getMessage());
+        }
+        return null;
+    }
+
+
+    private static Object getJSONFromURL(URL url) throws IOException {
+        HttpsURLConnection connection = null;
+
+        try {
+            connection = (HttpsURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Authorization", "Bearer " + TOKEN);
+
+            disableConnectionReuseIfNecessary();
+
+            return JSONValue.parse(readResponse(connection));
         } catch (MalformedURLException e) {
             throw new IOException("Invalid endpoint URL specified." + e.getMessage());
         } catch (Exception e) {

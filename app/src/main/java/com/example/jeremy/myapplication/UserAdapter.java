@@ -16,10 +16,10 @@ import android.widget.TextView;
 
 import java.util.List;
 
-public class UserAdapter extends ArrayAdapter<String>
+public class UserAdapter extends ArrayAdapter<User>
 {
 
-    public UserAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<String> objects) {
+    public UserAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<User> objects) {
         super(context, resource, objects);
     }
 
@@ -27,7 +27,7 @@ public class UserAdapter extends ArrayAdapter<String>
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        String user = getItem(position);
+        String user = getItem(position).getmHandle();
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.user_item_layout, parent, false);
