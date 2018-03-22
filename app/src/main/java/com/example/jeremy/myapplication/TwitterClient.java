@@ -23,9 +23,10 @@ public class TwitterClient {
     private final static String TOKEN = "AAAAAAAAAAAAAAAAAAAAACJl4wAAAAAAHpkA5UaHDodjo01kteq9nB%2Fqjns%3DGxarAYeiInh2pTDK3WvhRwsmrPCVVchsT48sj6CcyUsfPdglvP";
     private final static String ACCOUNT_NAME = "KState";
     private final static int NUM_TWEETS = 20;
+    private final static int NUM_FOLLOWERS_TO_GET = 100;
 
     private static String sTweetURL = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%d";
-    private static String sUsersURL = "https://api.twitter.com/1.1/friends/list.json?screen_name=%s";
+    private static String sUsersURL = "https://api.twitter.com/1.1/friends/list.json?screen_name=%s&count=%d";
 
     public static ArrayList<Tweet> getTweets() {
 
@@ -64,7 +65,7 @@ public class TwitterClient {
         HttpsURLConnection connection = null;
 
         try {
-            URL url = new URL(String.format(sUsersURL, ACCOUNT_NAME));
+            URL url = new URL(String.format(sUsersURL, ACCOUNT_NAME, NUM_FOLLOWERS_TO_GET));
 
             JSONArray objs = (JSONArray)((JSONObject)getJSONFromURL(url)).get("users");
 

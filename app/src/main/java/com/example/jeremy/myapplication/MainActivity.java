@@ -1,7 +1,9 @@
 package com.example.jeremy.myapplication;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,11 +31,9 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case CODE_TWEETS_OBTAINED:
-
-
-                TweetAdapter tweetyBird = new TweetAdapter(this, 0, mTweets);
-                ListView Whateveryouwant = (ListView) findViewById(R.id.listview);
-                Whateveryouwant.setAdapter(tweetyBird);
+                TweetAdapter adapter = new TweetAdapter(this, 0, getFilteredTweets());
+                ListView tweetLV = (ListView) findViewById(R.id.listview);
+                tweetLV.setAdapter(adapter);
         }
     }
 
@@ -62,6 +62,17 @@ public class MainActivity extends AppCompatActivity {
             // Use ActivityResult to notify main thread that tweets have been obtains (shouldn't update UI in ASync task)
             onActivityResult(CODE_TWEETS_OBTAINED, -1, null);
         }
+    }
+
+    private ArrayList<Tweet> getFilteredTweets(){
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
+        ArrayList<Tweet> tweets = new ArrayList<Tweet>();
+        for (int i =0;i<mTweets.size();i=i+1) {
+            if (pref.getBoolean(mTweets.get(i).mHandle, true)){
+                tweets.add(mTweets.get(i));
+            }
+        }
+        return tweets;
     }
 
 
