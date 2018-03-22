@@ -13,7 +13,7 @@ public class User {
     }
 
 
-    public String getmHandle() {
+    public String getHandle() {
         return mHandle;
     }
 }

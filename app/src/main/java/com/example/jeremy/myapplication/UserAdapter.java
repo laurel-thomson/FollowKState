@@ -27,7 +27,7 @@ public class UserAdapter extends ArrayAdapter<User>
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        String user = getItem(position).getmHandle();
+        String user = getItem(position).getHandle();
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.user_item_layout, parent, false);

@@ -1,5 +1,6 @@
 package com.example.jeremy.myapplication;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.AsyncTask;
@@ -16,11 +17,16 @@ public class MainActivity extends AppCompatActivity {
     private final int CODE_TWEETS_OBTAINED = 1000;
 
     private ArrayList<Tweet> mTweets;
+    private TweetCollection mTweetCollection;
+
+    private static Context sContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        sContext = getApplicationContext();
+        mTweetCollection = new TweetCollection();
 
         // Start threaded task to retrieve Tweets
         new RetrieveTweetsTask().execute();
@@ -31,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case CODE_TWEETS_OBTAINED:
-                TweetAdapter adapter = new TweetAdapter(this, 0, getFilteredTweets());
+                TweetAdapter adapter = new TweetAdapter(this, 0, mTweets);
                 ListView tweetLV = (ListView) findViewById(R.id.listview);
                 tweetLV.setAdapter(adapter);
         }
@@ -45,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
 
         protected String doInBackground(String... urls) {
             try {
-                mTweets = TwitterClient.getTweets();
+                mTweets = mTweetCollection.getFilteredTweets();
             } catch (Exception e) {
                 Log.e("ERROR", "Error retrieving tweets: " + e.getMessage());
             }
@@ -64,15 +70,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private ArrayList<Tweet> getFilteredTweets(){
-        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(this);
-        ArrayList<Tweet> tweets = new ArrayList<Tweet>();
-        for (int i =0;i<mTweets.size();i=i+1) {
-            if (pref.getBoolean(mTweets.get(i).mHandle, true)){
-                tweets.add(mTweets.get(i));
-            }
-        }
-        return tweets;
+
+
+    public static Context getContext() {
+        return sContext;
     }
 
 

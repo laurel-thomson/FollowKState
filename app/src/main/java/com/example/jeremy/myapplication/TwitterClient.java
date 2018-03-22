@@ -20,20 +20,21 @@ import org.json.simple.JSONValue;
 
 public class TwitterClient {
 
+
     private final static String TOKEN = "AAAAAAAAAAAAAAAAAAAAACJl4wAAAAAAHpkA5UaHDodjo01kteq9nB%2Fqjns%3DGxarAYeiInh2pTDK3WvhRwsmrPCVVchsT48sj6CcyUsfPdglvP";
     private final static String ACCOUNT_NAME = "KState";
     private final static int NUM_TWEETS = 20;
-    private final static int NUM_FOLLOWERS_TO_GET = 100;
+    private final static int NUM_FOLLOWERS_TO_GET = 200;
 
     private static String sTweetURL = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%d";
     private static String sUsersURL = "https://api.twitter.com/1.1/friends/list.json?screen_name=%s&count=%d";
 
-    public static ArrayList<Tweet> getTweets() {
+    public static ArrayList<Tweet> getTweets(String accountName) {
 
         HttpsURLConnection connection = null;
 
         try {
-            URL url = new URL(String.format(sTweetURL, ACCOUNT_NAME, NUM_TWEETS));
+            URL url = new URL(String.format(sTweetURL, accountName, NUM_TWEETS));
 
 
             JSONArray objs = (JSONArray) getJSONFromURL(url);
@@ -60,7 +61,7 @@ public class TwitterClient {
         return null;
     }
 
-    public static ArrayList<User> getUsers() {
+    public static void getUsers() {
 
         HttpsURLConnection connection = null;
 
@@ -70,25 +71,22 @@ public class TwitterClient {
             JSONArray objs = (JSONArray)((JSONObject)getJSONFromURL(url)).get("users");
 
             if (objs != null) {
-                ArrayList<User> users = new ArrayList<User>();
+                UserCollection userList = UserCollection.getInstance();
 
                 // Loop through each JSONObject, get Tweet data from it, and create a Tweet to add to the list
                 for (int i = 0; i < objs.size(); i++) {
                     String handle = ((JSONObject)objs.get(i)).get("screen_name").toString();
-                    users.add(new User(handle));
+                    userList.addUser(new User(handle));
                     //String handle = ((JSONArray) userObj.get("users")).get("screen_name").toString();
 
                     //users.add(new User(handle));
                 }
-
-                return users;
             }
         }
         catch (Exception e)
         {
             Log.e("ERROR", "Error retrieving users: " + e.getMessage());
         }
-        return null;
     }
 
 

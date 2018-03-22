@@ -6,7 +6,8 @@ import java.util.Date;
 
 public class Tweet {
 
-    public String mAuthor;
+    private User mAuthor;
+
     public String mText;
     public Date mDate;
     public int mLikes;
@@ -19,7 +20,7 @@ public class Tweet {
     public String mProfilePictureUrl;
 
     public Tweet(String author, String text) {
-        mAuthor = author;
+        mAuthor = new User(author);
         mText = text;
     }
 
@@ -34,7 +35,7 @@ public class Tweet {
                  String profilePictureUrl,
                  String videoUrl,
                  boolean isRetweet) {
-        this.mAuthor = author;
+        this.mAuthor = new User(author);
         this.mText = text;
         this.mDate = date;
         this.mLikes = likes;
@@ -46,4 +47,9 @@ public class Tweet {
         this.mProfilePictureUrl = profilePictureUrl;
         this.mVideoUrl = videoUrl;
     }
+
+    public User getAuthor() {
+        return mAuthor;
+    }
+
 }

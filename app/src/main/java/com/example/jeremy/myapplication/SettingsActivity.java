@@ -12,17 +12,23 @@ import java.util.ArrayList;
 public class SettingsActivity extends Activity {
 
     private final int CODE_USERS_OBTAINED = 1001;
-    private ArrayList<User> mUsers;
+    private UserCollection mUserCollection;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        new RetrieveUsersTask().execute();
+        //new RetrieveUsersTask().execute();
+        mUserCollection = UserCollection.getInstance();
+        mUserCollection.addUser(new User("kstate"));
+
+        ListView userLV = findViewById(R.id.settings_listview);
+        UserAdapter adapter = new UserAdapter(this, R.layout.user_item_layout, mUserCollection.getAllUsers());
+        userLV.setAdapter(adapter);
 
     }
 
-
+/*
         @Override
         protected void onActivityResult(int requestCode, int resultCode, Intent data) {
             super.onActivityResult(requestCode, resultCode, data);
@@ -42,7 +48,9 @@ public class SettingsActivity extends Activity {
 
             protected String doInBackground(String... urls) {
                 try {
-                    mUsers = TwitterClient.getUsers();
+                    TwitterClient.getUsers();
+                    UserCollection userList = UserCollection.getInstance();
+                    mUsers = userList.getAllUsers();
                 } catch (Exception e) {
                     Log.e("ERROR", "Error retrieving users: " + e.getMessage());
                 }
@@ -60,4 +68,5 @@ public class SettingsActivity extends Activity {
                 onActivityResult(CODE_USERS_OBTAINED, -1, null);
             }
         }
+        */
 }
