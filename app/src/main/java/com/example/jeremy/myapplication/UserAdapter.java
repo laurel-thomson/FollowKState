@@ -39,7 +39,7 @@ public class UserAdapter extends ArrayAdapter<User>
         final TextView userTV = (TextView) convertView.findViewById(R.id.user_handle);
 
 
-
+        //listener for checkboxes : updates shared preferences automatically (no save button)
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -54,6 +54,9 @@ public class UserAdapter extends ArrayAdapter<User>
 
 
         SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
+
+        //when the SettingsActivity loads, display as checked only those users who are
+        //stored as true in SharedPreferences
         checkBox.setChecked(pref.getBoolean(user, true));
 
         userTV.setText(user);

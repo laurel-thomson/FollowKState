@@ -10,11 +10,13 @@ import java.util.HashMap;
  * Created by laurel on 3/22/18.
  */
 
+//Singleton class that stores all of the K-State accounts that can be followed (hard coded)
 public class UserCollection {
 
     private static UserCollection sSoleInstance;
 
-    private HashMap<User, Boolean> mUsers = new HashMap<User, Boolean>();
+    //TODO : hardcode all users in here :D
+    private User[] mUsers = {new User("kstate"), new User("KStateMBB")};
     private SharedPreferences mPref;
 
     private UserCollection(){}
@@ -27,35 +29,30 @@ public class UserCollection {
     return sSoleInstance;
     }
 
-    //adds a user to the mUsers hashmap, adds its visibility as the value
-    public void addUser(User user) {
-        mUsers.put(user, mPref.getBoolean(user.getHandle(), true));
-    }
 
     //returns a list of all users, ignoring visibility
     public ArrayList<User> getAllUsers() {
-        ArrayList<User> userList = new ArrayList<User>();
-        for (HashMap.Entry<User, Boolean> entry : mUsers.entrySet()) {
-            User user = entry.getKey();
-            userList.add(user);
+        ArrayList<User> users = new ArrayList<User>();
+        for (int i = 0; i < mUsers.length; i++) {
+            users.add(mUsers[i]);
         }
-        return userList;
+        return users;
     }
 
     //returns a list of all users that have been filtered as visible by the user
     public ArrayList<User> getFilteredUsers() {
-        ArrayList<User> userList = new ArrayList<User>();
-        for (HashMap.Entry<User, Boolean> entry : mUsers.entrySet()) {
-            if (entry.getValue()) {
-                userList.add(entry.getKey());
+        ArrayList<User> users = new ArrayList<User>();
+        for (int i = 0; i < mUsers.length; i++) {
+            if (isFilteredUser(mUsers[i])) {
+                users.add(mUsers[i]);
             }
         }
-        return userList;
+        return users;
     }
 
     //returns whether or not the given user has been filtered to be visible by the user
     public boolean isFilteredUser(User user) {
-        return mUsers.get(user);
+        return mPref.getBoolean(user.getHandle(), true);
     }
 
 }

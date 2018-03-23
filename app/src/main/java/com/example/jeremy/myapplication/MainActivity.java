@@ -8,6 +8,8 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -18,20 +20,33 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Tweet> mTweets;
     private TweetCollection mTweetCollection;
-
     private static Context sContext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //I used MainActivity's context in the UserCollection class to get a reference
+        //to the default SharedPreferences
         sContext = getApplicationContext();
+
         mTweetCollection = new TweetCollection();
 
         // Start threaded task to retrieve Tweets
         new RetrieveTweetsTask().execute();
+
+        //TODO : update this awkward button to a real menu
+        Button settingsButton = (Button) findViewById(R.id.settings);
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
+    //Once the AsyncTask completes, populate the listview with mTweets (filtered Tweets)
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -71,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
+    //getter for UserCollection class
     public static Context getContext() {
         return sContext;
     }
