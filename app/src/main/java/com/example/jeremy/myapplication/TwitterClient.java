@@ -9,7 +9,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 import javax.net.ssl.HttpsURLConnection;
 
@@ -42,10 +45,19 @@ public class TwitterClient {
                 // Loop through each JSONObject, get Tweet data from it, and create a Tweet to add to the list
                 for (int i = 0; i < objs.size(); i++) {
                     JSONObject tweetObj = (JSONObject) objs.get(i);
-                    String author = ((JSONObject) tweetObj.get("user")).get("name").toString();
+                    String name = ((JSONObject) tweetObj.get("user")).get("name").toString();
+                    String handle = ((JSONObject)tweetObj.get("user")).get("screen_name").toString();
                     String text = tweetObj.get("text").toString();
+                    int retweetCount = Integer.parseInt(tweetObj.get("retweet_count").toString());
+                    boolean isRetweet = Boolean.valueOf(tweetObj.get("retweeted").toString());
+                    int likeCount = Integer.parseInt(tweetObj.get("favorite_count").toString());
+                    DateFormat fmt = new SimpleDateFormat("EEE MMM dd kk:mm:ss Z yyyy");
+                    Date date = (Date)fmt.parse(tweetObj.get("created_at").toString());
+                    String profilePicURL = ((JSONObject)tweetObj.get("user")).get("profile_image_url").toString();
 
-                    tweets.add(new Tweet(author, text));
+
+                    tweets.add(new Tweet(name, handle, text, retweetCount,
+                            isRetweet, likeCount, date, profilePicURL));
                 }
 
                 return tweets;

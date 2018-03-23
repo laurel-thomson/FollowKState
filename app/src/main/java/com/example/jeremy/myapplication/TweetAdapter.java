@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+//TODO : this will need to be a RecycleView
+//TODO : need to adapt the rest of Tweet's properties to the layout
     public class TweetAdapter extends ArrayAdapter<Tweet>
 {
     public TweetAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Tweet> objects) {

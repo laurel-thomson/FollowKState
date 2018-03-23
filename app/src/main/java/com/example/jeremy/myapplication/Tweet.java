@@ -5,51 +5,25 @@ import java.util.Date;
 //This class represents a Tweet.  It models an object in the real world.
 
 public class Tweet {
-
-    private User mAuthor;
-
-    public String mText;
-    public Date mDate;
-    public int mLikes;
-    public int mRetweets;
-    public int mReplies;
+    public String mName;
     public String mHandle;
-    public String mImageUrl;
-    public String mVideoUrl;
+    public String mText;
+    public int mRetweetCount;
     public boolean mIsRetweet;
+    public int mLikeCount;
+    public Date mDate;
     public String mProfilePictureUrl;
 
-    public Tweet(String author, String text) {
-        mAuthor = new User(author);
+    public Tweet(String name, String handle, String text, int retweetCount,
+                    boolean isRetweet, int likeCount, Date date, String profilePicURL) {
+        mName = name;
+        mHandle = handle;
         mText = text;
-    }
-
-    public Tweet(String author,
-                 String text,
-                 Date date,
-                 int likes,
-                 int retweets,
-                 int replies,
-                 String handle,
-                 String imageUrl,
-                 String profilePictureUrl,
-                 String videoUrl,
-                 boolean isRetweet) {
-        this.mAuthor = new User(author);
-        this.mText = text;
-        this.mDate = date;
-        this.mLikes = likes;
-        this.mHandle = handle;
-        this.mRetweets = retweets;
-        this.mIsRetweet = isRetweet;
-        this.mReplies = replies;
-        this.mImageUrl = imageUrl;
-        this.mProfilePictureUrl = profilePictureUrl;
-        this.mVideoUrl = videoUrl;
-    }
-
-    public User getAuthor() {
-        return mAuthor;
+        mRetweetCount = retweetCount;
+        mIsRetweet = isRetweet;
+        mLikeCount = likeCount;
+        mDate = date;
+        mProfilePictureUrl = profilePicURL;
     }
 
 }
