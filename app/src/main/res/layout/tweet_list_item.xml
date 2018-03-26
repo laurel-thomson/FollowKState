@@ -39,10 +39,10 @@
             android:paddingLeft="80dp"
             android:textSize="11sp" />
         <TextView
+            android:id="@+id/tv_retweets"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingLeft="25dp"
-            android:text="10"
             android:textSize="11sp"/>
         <TextView
             android:layout_width="wrap_content"
@@ -51,10 +51,10 @@
             android:paddingLeft="50dp"
             android:textSize="11sp"/>
         <TextView
+            android:id="@+id/tv_likes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="11sp"
-            android:text="20"
             android:paddingLeft="10dp"/>
     </LinearLayout>
 </RelativeLayout>

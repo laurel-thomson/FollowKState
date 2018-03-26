@@ -2,21 +2,23 @@ package com.example.jeremy.myapplication;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     private final int CODE_TWEETS_OBTAINED = 1000;
+
+    private ProgressBar mProgressBar;
 
     private ArrayList<Tweet> mTweets;
     private TweetCollection mTweetCollection;
@@ -29,6 +31,8 @@ public class MainActivity extends AppCompatActivity {
         //I used MainActivity's context in the UserCollection class to get a reference
         //to the default SharedPreferences
         sContext = getApplicationContext();
+
+        mProgressBar = findViewById(R.id.pb_progress);
 
         mTweetCollection = new TweetCollection();
 
@@ -52,16 +56,25 @@ public class MainActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case CODE_TWEETS_OBTAINED:
-                TweetAdapter adapter = new TweetAdapter(this, 0, mTweets);
                 ListView tweetLV = (ListView) findViewById(R.id.listview);
+
+                TweetAdapter adapter = new TweetAdapter(this, 0, mTweets);
                 tweetLV.setAdapter(adapter);
+
+                tweetLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                        Intent intent = new Intent(MainActivity.this, TweetActivity.class);
+                        startActivity(intent);
+                    }
+                });
         }
     }
 
     class RetrieveTweetsTask extends AsyncTask<String, Void, String> {
 
         protected void onPreExecute() {
-            //mProgressBar.setVisibility(View.VISIBLE);
+            mProgressBar.setVisibility(View.VISIBLE);
         }
 
         protected String doInBackground(String... urls) {
@@ -77,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
             if(response == null) {
                 response = "THERE WAS AN ERROR";
             }
-            //mProgressBar.setVisibility(View.GONE);
+            mProgressBar.setVisibility(View.GONE);
             //Log.i("INFO", response);
 
             // Use ActivityResult to notify main thread that tweets have been obtains (shouldn't update UI in ASync task)

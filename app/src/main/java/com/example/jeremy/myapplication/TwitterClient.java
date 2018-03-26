@@ -1,7 +1,6 @@
 package com.example.jeremy.myapplication;
 
 import android.os.Build;
-import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,7 +24,7 @@ public class TwitterClient {
 
 
     private final static String TOKEN = "AAAAAAAAAAAAAAAAAAAAACJl4wAAAAAAHpkA5UaHDodjo01kteq9nB%2Fqjns%3DGxarAYeiInh2pTDK3WvhRwsmrPCVVchsT48sj6CcyUsfPdglvP";
-    private final static int NUM_TWEETS = 10;
+    private final static int NUM_TWEETS = 3;
     private static String sTweetURL = "https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=%s&count=%d";
 
     //Gets a list of tweets from the given twitter handle
