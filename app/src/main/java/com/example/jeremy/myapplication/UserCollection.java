@@ -20,17 +20,17 @@ public class UserCollection {
 
     private static UserCollection sSoleInstance;
 
-    //TODO : hardcode all users in here :D
     private ArrayList<User> mUsers;
-    //private User[] mUsers = {new User("kstate"), new User("KStateMBB")};
     private SharedPreferences mPref;
 
-    private UserCollection(){ populateUsers(); }
+    private UserCollection(){
+        mPref = PreferenceManager.getDefaultSharedPreferences(MainActivity.getContext());
+        populateUsers();
+    }
 
     public static UserCollection getInstance() {
         if (sSoleInstance == null) {
             sSoleInstance = new UserCollection();
-            sSoleInstance.mPref = PreferenceManager.getDefaultSharedPreferences(MainActivity.getContext());
         }
     return sSoleInstance;
     }
@@ -46,7 +46,14 @@ public class UserCollection {
             BufferedReader br = new BufferedReader(isr);
             String line = br.readLine();
             while (line != null) {
-                mUsers.add(new User(line));
+                String[] s = line.split(",");
+                mUsers.add(new User(s[0]));
+                if (s[1].equals("T")) {
+                    addDefaultFilter(s[0], true);
+                }
+                else {
+                    addDefaultFilter(s[0], false);
+                }
                 line = br.readLine();
             }
         } catch (IOException exc) {
@@ -70,8 +77,20 @@ public class UserCollection {
     }
 
     //returns whether or not the given user has been filtered to be visible by the user
-    public boolean isFilteredUser(User user) {
+    private boolean isFilteredUser(User user) {
         return mPref.getBoolean(user.getHandle(), true);
+    }
+
+    //Adds the default setting for the given user handle to the
+    //Shared Preferences if a key in mPref for the given handle
+    //has not already been created.  (Only applicable if the user
+    //hasn't checked/unchecked the checkbox in SettingsActivity)
+    private void addDefaultFilter(String handle, boolean isDefault) {
+        if (!mPref.contains(handle)) {
+            SharedPreferences.Editor editor = mPref.edit();
+            editor.putBoolean(handle, isDefault);
+            editor.commit();
+        }
     }
 
 }

@@ -1,8 +1,8 @@
-KState
-catscupboardksu
-KStateWriting
-KStateArtDept
-kstateISSS
-kstate_gardents
-KStatePF
-KState360
+KState,F
+catscupboardksu,F
+KStateWriting,F
+KStateArtDept,F
+kstateISSS,F
+kstate_gardens,T
+KStatePF,F
+KState360,T

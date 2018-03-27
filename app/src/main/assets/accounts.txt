@@ -3,7 +3,7 @@ catscupboardksu
 KStateWriting
 KStateArtDept
 kstateISSS
-kstate_gardents
+kstate_gardens
 KStatePF
 KState360
 KStateMTD
