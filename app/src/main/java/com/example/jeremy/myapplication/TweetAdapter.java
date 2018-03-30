@@ -33,12 +33,10 @@ import java.util.List;
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        //It loops through the list of Tweets behind the scenes and gets the Tweet from each position.
         Tweet tweet = getItem(position);
 
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
-            //Here is where we connect the TweetAdapter to the tweet_list_item layout that Jeremy made
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.tweet_list_item, parent, false);
 
         }

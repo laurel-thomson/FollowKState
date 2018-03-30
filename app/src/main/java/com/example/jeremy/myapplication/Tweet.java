@@ -1,5 +1,6 @@
 package com.example.jeremy.myapplication;
 
+import java.util.Calendar;
 import java.util.Date;
 
 //This class represents a Tweet.  It models an object in the real world.
@@ -24,6 +25,16 @@ public class Tweet {
         mLikeCount = likeCount;
         mDate = date;
         mProfilePictureUrl = profilePicURL;
+    }
+
+    //Gets the ranking of a Tweet based on the mDate, mLikeCount, and mRetweetCount. Max rank of 10. 10 good :)
+    public double getRank(){
+        double rank;
+        Date currentTime = Calendar.getInstance().getTime();
+        long diff = (currentTime.getTime() - mDate.getTime())/(1000*60*60);
+        rank = Math.min(10,(Math.log(mLikeCount+1)/Math.log(2) + Math.log(mRetweetCount+1)/Math.log(2) + Math.max(0,10- diff/12))/3);
+        return rank;
+
     }
 
 }
