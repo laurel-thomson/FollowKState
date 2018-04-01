@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by laurel on 3/22/18.
@@ -35,20 +36,24 @@ public class UserCollection {
     return sSoleInstance;
     }
 
+    //TODO: Sort users alphabetically
     private void populateUsers() {
         try {
             mUsers = new ArrayList<>();
 
             // Read in user handles from asset file, use accounts_testing for now to reduce load
             AssetManager am = MainActivity.getContext().getAssets();
-            InputStream is = am.open("accounts_testing.txt");
+            InputStream is = am.open("accounts.txt");
             InputStreamReader isr = new InputStreamReader(is);
             BufferedReader br = new BufferedReader(isr);
             String line = br.readLine();
             while (line != null) {
+
+                //lines in asset file look like:
+                //kstate,K-State,T
                 String[] s = line.split(",");
-                mUsers.add(new User(s[0]));
-                if (s[1].equals("T")) {
+                mUsers.add(new User(s[0],s[1]));
+                if (s[2].equals("T")) {
                     addDefaultFilter(s[0], true);
                 }
                 else {
@@ -56,6 +61,7 @@ public class UserCollection {
                 }
                 line = br.readLine();
             }
+            Collections.sort(mUsers);
         } catch (IOException exc) {
             Log.e("TAG", exc.getMessage());
         }
