@@ -6,14 +6,21 @@ import java.util.ArrayList;
  * Created by laurel on 3/22/18.
  */
 
-//holds all the tweets from the filtered users.  The number of tweets to get per user
-//is hardcoded into the TwitterClient class
+//Singleton class that stores all of the Tweets to display in the app
 public class TweetCollection {
 
     private UserCollection mUserCollection;
     private ArrayList<Tweet> mTweets = new ArrayList<Tweet>();
+    private static TweetCollection sSoleInstance;
 
-    public TweetCollection() {
+    public static TweetCollection getInstance() {
+        if (sSoleInstance == null) {
+            sSoleInstance = new TweetCollection();
+        }
+        return sSoleInstance;
+    }
+
+    private TweetCollection() {
         mUserCollection = UserCollection.getInstance();
     }
 
@@ -30,4 +37,11 @@ public class TweetCollection {
         }
         return mTweets;
     }
+
+    //Returns the tweet in the list of tweets at position
+    public Tweet getTweet(int position) {
+        return mTweets.get(position);
+    }
+
+    //TODO : add in method to sort the tweets by rank
 }

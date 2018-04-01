@@ -1,5 +1,6 @@
 package com.example.jeremy.myapplication;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -15,6 +16,7 @@ public class TweetActivity extends AppCompatActivity {
     private TextView mTweet_TV;
     private TextView mRetweets_TV;
     private TextView mLikes_TV;
+    private TweetCollection mTweetCollection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,25 +26,29 @@ public class TweetActivity extends AppCompatActivity {
         // Add back button to action bar (implementation below in onOptionsItemSelected)
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        // Dummy Tweet data for now
-        Tweet t = new Tweet("Josh Brummer", "i_am_not_a_bird", "THIS IS A BIG FAT TEST", 42, false, 69, null, "http://pbs.twimg.com/profile_images/876811392384356352/FOCr1pfY_normal.jpg");
+        mTweetCollection = TweetCollection.getInstance();
+
+        Intent intent = getIntent();
+        int position = intent.getIntExtra("tweetPosition",0);
+        Tweet tweet = mTweetCollection.getTweet(position);
+
 
         mProfilePic_IV = findViewById(R.id.iv_profilePic);
         Picasso.with(this)
-                .load(t.mProfilePictureUrl)
+                .load(tweet.mProfilePictureUrl)
                 .into(mProfilePic_IV);
 
         mHandle_TV = findViewById(R.id.tv_handle);
-        mHandle_TV.setText(t.mHandle);
+        mHandle_TV.setText(tweet.mHandle);
 
         mTweet_TV = findViewById(R.id.tv_tweet);
-        mTweet_TV.setText(t.mText);
+        mTweet_TV.setText(tweet.mText);
 
         mRetweets_TV = findViewById(R.id.tv_retweets);
-        mRetweets_TV.setText("" + t.mRetweetCount);
+        mRetweets_TV.setText("" + tweet.mRetweetCount);
 
         mLikes_TV = findViewById(R.id.tv_likes);
-        mLikes_TV.setText("" + t.mLikeCount);
+        mLikes_TV.setText("" + tweet.mLikeCount);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         mProgressBar = findViewById(R.id.pb_progress);
 
-        mTweetCollection = new TweetCollection();
+        mTweetCollection = TweetCollection.getInstance();
 
         // Start threaded task to retrieve Tweets
         new RetrieveTweetsTask().execute();
@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent intent = new Intent(MainActivity.this, TweetActivity.class);
+                        intent.putExtra("tweetPosition", i);
                         startActivity(intent);
                     }
                 });
