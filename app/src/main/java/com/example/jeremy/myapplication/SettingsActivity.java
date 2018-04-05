@@ -11,7 +11,6 @@ import android.widget.ListView;
 
 public class SettingsActivity extends AppCompatActivity {
 
-    private final int CODE_USERS_OBTAINED = 1001;
     private UserCollection mUserCollection;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
         ListView userLV = findViewById(R.id.settings_listview);
         UserAdapter adapter = new UserAdapter(this, R.layout.user_item_layout, mUserCollection.getAllUsers());
         userLV.setAdapter(adapter);
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
