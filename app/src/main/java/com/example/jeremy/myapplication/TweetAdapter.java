@@ -14,22 +14,17 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-//TODO : this will need to be a RecycleView
-    public class TweetAdapter extends ArrayAdapter<Tweet>
+public class TweetAdapter extends ArrayAdapter<Tweet>
 {
 
     private Context mContext;
 
-    //This is the Constructor.  We called it in MainActivity when we made "tweetyBird" - the adapter.
-    //The third parameter is a list of Tweets...which is what we gave it to do its job!
     public TweetAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Tweet> objects) {
         super(context, resource, objects);
 
         mContext = context;
     }
 
-    //This is a method(function) from the ArrayAdapter class that we are overriding with
-    //our own stuff.  It inflates each individual Tweet list item view.
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -38,13 +33,18 @@ import java.util.List;
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.tweet_list_item, parent, false);
-
         }
 
         ImageView profilePic = convertView.findViewById(R.id.profile_pic);
         Picasso.with(mContext)
                 .load(tweet.mProfilePictureUrl)
                 .into(profilePic);
+
+        TextView name = convertView.findViewById(R.id.tv_name);
+        name.setText(tweet.mName);
+
+        TextView date = convertView.findViewById(R.id.tv_date);
+        date.setText(tweet.getFormattedDate());
 
         TextView tweetContent = convertView.findViewById(R.id.tweet_content);
         tweetContent.setText(tweet.mText);
@@ -55,7 +55,6 @@ import java.util.List;
         TextView numLikes = convertView.findViewById(R.id.tv_likes);
         numLikes.setText("" + tweet.mLikeCount);
 
-        // Return the completed view to render on screen
         return convertView;
 
     }

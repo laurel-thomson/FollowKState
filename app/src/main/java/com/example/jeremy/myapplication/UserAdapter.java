@@ -25,7 +25,7 @@ public class UserAdapter extends ArrayAdapter<User>
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        String user = getItem(position).getHandle();
+        final User user = getItem(position);
 
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.user_item_layout, parent, false);
@@ -41,11 +41,10 @@ public class UserAdapter extends ArrayAdapter<User>
         checkBox.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
-                final boolean isChecked = checkBox.isChecked();
-                final String userName = userTV.getText().toString();
+                final String userHandle = user.getHandle();
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getContext());
                 SharedPreferences.Editor editor = pref.edit();
-                editor.putBoolean(userName, checkBox.isChecked());
+                editor.putBoolean(userHandle, checkBox.isChecked());
                 editor.commit();
             }
         });
@@ -55,9 +54,9 @@ public class UserAdapter extends ArrayAdapter<User>
 
         //when the SettingsActivity loads, display as checked only those users who are
         //stored as true in SharedPreferences
-        checkBox.setChecked(pref.getBoolean(user, true));
+        checkBox.setChecked(pref.getBoolean(user.getHandle(), true));
 
-        userTV.setText(user);
+        userTV.setText(user.getName());
 
 
         return convertView;

@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -34,20 +36,14 @@ public class MainActivity extends AppCompatActivity {
 
         mProgressBar = findViewById(R.id.pb_progress);
 
-        mTweetCollection = new TweetCollection();
+        mTweetCollection = TweetCollection.getInstance();
 
+        refreshTweets();
+    }
+
+    private void refreshTweets() {
         // Start threaded task to retrieve Tweets
         new RetrieveTweetsTask().execute();
-
-        //TODO : update this awkward button to a real menu
-        Button settingsButton = (Button) findViewById(R.id.settings);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 
     //Once the AsyncTask completes, populate the listview with mTweets (filtered Tweets)
@@ -65,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                         Intent intent = new Intent(MainActivity.this, TweetActivity.class);
+                        intent.putExtra("tweetPosition", i);
                         startActivity(intent);
                     }
                 });
@@ -104,6 +101,27 @@ public class MainActivity extends AppCompatActivity {
         return sContext;
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()) {
+            case R.id.mi_refresh:
+                refreshTweets();
+                return true;
+            case R.id.mi_accounts:
+                Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.mi_exit:
+                finish();
+                return true;
+        }
+        return(super.onOptionsItemSelected(item));
+    }
 }
-

@@ -1,160 +1,129 @@
-KState
-catscupboardksu
-KStateWriting
-KStateArtDept
-kstateISSS
-kstate_gardens
-KStatePF
-KState360
-KStateMTD
-KStateMBB
-KStateSBP_SBVP
-KSU_CDBusiness
-KStateRegistrar
-KStateIPRF
-ksuarted
-KSUPhysics
-KStateTeachers
-CoachBillSnyder
-KStateOIE
-KStatePoliSci
-KStateFilmFest
-KStateSummer
-kstateCSI
-KStateLARCP
-KSUFoodscience
-ArtSCiDiversity
-KSUHist
-ksuOURCI
-KStatePride
-KSU_OIP
-KStateHCS
-KSU_ChemE
-KStateDiversity
-KStateCARE
-kstatecorporate
-englishkstate
-KSUMythBusters
-Channel8KSU
-kstatehc
-KStateSingers
-KStateKAWSE
-kstatelab
-KStateSales
-KStateJPs
-KStateIA
-KSUCOEADVISOR
-KSU_RGI
-ksuchoirs
-kstateVPHC
-KState_RSCAD
-ksuyearbook
-KSUCVM
-KStateEarthWeek
-KSU_cecd
-KStateVDL
-kstate_engdean
-KStateEngg
-KState1stSchol
-ksumap
-kstateaging
-KstateLSAMP
-KStateOE
-KStateGeology
-KStateKines
-StartupCats
-KSUPetVets
-KStateRockWall
-KStateChemistry
-KStateArtSci
-KStateCareers
-KSUECE
-KSUGradSchool
-kstate_ctl
-KStateOlathe
-KStateAgron
-BeachMuseum
-KSUMilFam
-Big12Conference
-kstatefirst
-KStatePilots
-kstateSGA
-KStateBMB
-KStateFNDH
-KSUCollegeofEd
-ChapmanCenter1
-kstate_geog
-KStateTheatre
-kstate_engggrad
-KStatePolice
-KState_EnggRes
-kstateatid
-KStateITstatus
-StuLifeKSU
-wildcatwatchksu
-KStateCancerRes
-KStateSSLS
-WomenofKState
-KStateRec
-KStateProud
-ksucommstudies
-KSUAdClub
-KStateAdmission
-Wildcats_4ever
-kstatebknetwork
-kstategecon
-kstatehd
-KStateFB
-kstate_gameday
-ULifeCafe
-humecsupport
-kstateweb
-kstateUPC
-KStateStufo
-KSU_Foundation
-itnewskstate
-KStateBusiness
-APDesignKState
-kstatecollegian
-BlueKeyKSU
-KStateHDC
-kstategr
-kstate_union
-KStateFSL
-KSU_IT_Threats
-KStateASCC
-KStateITHelp
-KSUCEO
-kstateAgToday
-KStateGlobal
-kstatecareer
-HandsOn_KState
-kstateag
-KStateAbroad
-KstateLafene
-kstatejmc
-mccainksu
-KStateHE
-KSUPhoto
-kstatelibraries
-KStatePFA
-transfer2kstate
-kstatefinaid
-KstatePolytech
-KStateAlumni
-kstatesports
-KStateRschExtn
-KStateNews
-coachseansnyder
-KStateWGolf
-KStatSOC
-KStateBSB
-KStateVB
-KStateROW
-KStateTEN
-KStateMGolf
-GoPowercat
-KStateFSL
-KStateWBB
-KStateMBB
-KStateTFXB
+KState,K-State,T
+catscupboardksu,Cat's Cupboard,F
+KStateWriting,K-State Writing,F
+KStateArtDept,K-State Art Department,F
+kstateISSS,International Student & Scholar Services Office,F
+kstate_gardens,K-State Gardens,F
+KStatePF,Powercat Financial,F
+KState360,K-State 360,T
+KStateMTD,School of Music, Theater, and Dance,T
+KStateMBB,K-State Men's Basketball,T,
+KStateSBP_SBVP,Student Body President & VP,T
+KSU_CDBusiness,Career Development,F
+KStateRegistrar,K-State Registrar,F
+KStateIPRF,Institute of Personal Financial Planning,F
+ksuarted,Art Education,F
+KSUPhysics,Physics Department,F
+KStateTeachers,K-State Teachers,F
+CoachBillSnyder,Coach Bill Snyder,T
+KStatePoliSci,Political Science Department,F
+KStateFilmFest,K-State Film Festival,F
+KStateSummer,K-State Summer,T
+kstateCSI,Center for Student Involvement,T
+KStateLARCP,Department of Landscape Architecture and Regional & Community Planning,F
+KSUFoodscience,Food Science,F
+KStateArtSci,Arts & Sciences Department,F
+KSUHist,History Department,F
+KStatePride,K-State Pride,T
+KSU_OIP,International Programs,F
+KStateHCS,Human Capital Services,F
+KSU_ChemE,Chemical Engineering,F
+KStateDiversity,K-State Diversity,T
+KStateCARE,CARE Office,F
+englishkstate,English Department,F
+KStateKAWSE,Office for the Advancement of Women in Science and Engineering,F
+KStateSales,National Strategic Selling Institute,F
+KStateIA,Office of International Admissions,F
+KSU_RGI,Rural Grocery Initiative,F
+ksuchoirs,K-State Choirs,F
+KState_RSCAD,K-State Research,F
+KSUCVM,College of Veterinary Medicine,F
+KSU_cecd,Center for Engagement and Community Development,T
+KStateVDL,Kansas State Veterinary Diagnostic Lab,T
+kstate_engdean,Engineering Dean,F
+KStateEngg,K-State Engineering,T
+KState_CIS,Computer Science Department,T
+KState1stSchol,First Scholars,F
+kstateaging,Center on Aging,F
+KstateLSAMP,LSAMP Kansas,F
+KStateOE,Orientation & Enrollment,T
+KStateGeology,Geology Department,F
+KStateKines,Kinesiology Department,F
+StartupCats,Startup Cats,F
+KSUPetVets,Pet Health Center,F
+KStateChemistry,Chemistry Department,F
+KStateCareers,K-State Careers,T
+KSUECE,Electrical & Computer Engineering,T
+KSUGradSchool,Graduate School,F
+KStateAgron,Agronomy Department,F
+KStateAg,College of Agriculture,F
+BeachMuseum,Beach Museum of Art,F
+Big12Conference,Big 12 Conference,T
+kstatefirst,K-State First,T
+kstateSGA,Student Governing Association,T
+KStateBMB,Biochemistry and Molecular Biophysics Program,F
+KStateFNDH,Human Nutrition Department,F
+KSUCollegeofEd,Collection of Education,F
+ChapmanCenter1,Chapman Center,F
+kstate_geog,Geography Department,F
+KStateTheatre,K-State Theater,T
+KStatePolice,K-State Police,T
+kstateatid,Apparel, Textile & Interior Design Department,F
+KStateITstatus,K-State IT Status,T
+StuLifeKSU,Office of Student Life,F
+wildcatwatchksu,Wildcat Watch,F
+KStateCancerRes,Cancer Research,F
+KStateSSLS,Staley School,F
+WomenofKState,Women of K-State,F
+KStateRec,Rec Center,T
+KStateProud,K-State Proud,F
+ksucommstudies,Communication Studies Department,F
+KStateAdmission,Admissions,F
+Wildcats_4ever,Wildcats Forever,F
+kstatebknetwork,Book Network,F
+kstatehd,Housing & Dining,F
+KStateFB,K-State Football,T
+kstate_gameday,K-State Gameday,T
+ULifeCafe,University Life Cafe,F
+humecsupport,Human Ecology Computing Support Group,F
+kstateweb,Web Serivces,F
+kstateUPC,UPC,T
+KStateStufo,Student Foundation,T
+KSU_Foundation,KSU Foundation,F
+KStateITHelp,IT Help Desk,T
+KStateBusiness,Business Department,F
+APDesignKState,AP Design,F
+kstatecollegian,K-State Collegian,T
+BlueKeyKSU,Blue Key,F
+kstategr,Government Relations,F
+kstate_union,Student Union,T
+KStateFSL,Greek Councils,F
+KStateGlobal,K-State Global,F
+kstatecareer,Career Center,T
+HandsOn_KState,Hands On K-State,F
+KStateAbroad,K-State Abroad,F
+KstateLafene,Lafene Health Center,T
+kstatejmc,A.Q. Miller School of Journalism & Mass Communications,F
+mccainksu,McCain Auditorium,F
+KStateHE,Human Ecology Department,F
+kstatelibraries,K-State Libraries,T
+KStatePFA,Parents & Family Association,F
+transfer2kstate,K-State Transfer,F
+kstatefinaid,Financial Aid,F
+KstatePolytech,Polytechnic Campus,F
+KStateAlumni,K-State Alumni,F
+kstatesports,K-State Sports,T
+KStateRschExtn,Research & Extension,F
+KStateNews,K-State News,T
+coachseansnyder,Coach Sean Snyder,T
+KStateWGolf,Women's Golf,T
+KStateSOC,Women's Soccer,T
+KStateBSB,K-State Baseball,T
+KStateVB,Women's Volleyball,T
+KStateROW,Women's Rowing,T
+KStateTEN,Women's Tennis,T
+KStateMGolf,Men's Golf,T
+GoPowercat,Go Powercat,T
+KStateWBB,Women's Basketball,T
+KStateMBB,Men's Basketball,T
+KStateTFXB,Track & Field,T
