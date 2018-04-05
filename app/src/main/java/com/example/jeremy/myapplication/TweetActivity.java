@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+
 public class TweetActivity extends AppCompatActivity {
 
     private ImageView mProfilePic_IV;
@@ -16,6 +18,7 @@ public class TweetActivity extends AppCompatActivity {
     private TextView mTweet_TV;
     private TextView mRetweets_TV;
     private TextView mLikes_TV;
+    private TextView mDate_TV;
     private TweetCollection mTweetCollection;
 
     @Override
@@ -49,6 +52,9 @@ public class TweetActivity extends AppCompatActivity {
 
         mLikes_TV = findViewById(R.id.tv_likes);
         mLikes_TV.setText("" + tweet.mLikeCount);
+
+        mDate_TV = findViewById(R.id.tv_date);
+        mDate_TV.setText(tweet.getFormattedDate());
     }
 
     @Override

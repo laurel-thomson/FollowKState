@@ -42,6 +42,12 @@ import java.util.List;
                 .load(tweet.mProfilePictureUrl)
                 .into(profilePic);
 
+        TextView name = convertView.findViewById(R.id.tv_name);
+        name.setText(tweet.mName);
+
+        TextView date = convertView.findViewById(R.id.tv_date);
+        date.setText(tweet.getFormattedDate());
+
         TextView tweetContent = convertView.findViewById(R.id.tweet_content);
         tweetContent.setText(tweet.mText);
 

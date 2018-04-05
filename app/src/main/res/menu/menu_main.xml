@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".MainActivity">
+
+    <item
+        android:id="@+id/mi_refresh"
+        android:icon="@android:drawable/ic_menu_rotate"
+        app:showAsAction="always"
+        android:title="Refresh Tweets" />
+
+    <item
+        android:id="@+id/mi_accounts"
+        app:showAsAction="never"
+        android:title="Accounts Following..." />
+
+    <item
+        android:id="@+id/mi_exit"
+        app:showAsAction="never"
+        android:title="Close App" />
+
+</menu>

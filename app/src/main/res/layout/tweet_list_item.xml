@@ -1,31 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="120dp"
+    android:layout_height="150dp"
     android:orientation="vertical"
     >
     <ImageView
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:id="@+id/profile_pic"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:layout_centerVertical="true" />
 
     <TextView
-        android:id="@+id/tweet_content"
-        android:layout_width="fill_parent"
-        android:layout_height="100dp"
-        android:padding="10dp"
-        android:textSize="20sp"
-        android:layout_toRightOf="@id/profile_pic" />
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@id/profile_pic"
+        android:layout_marginTop="2dp"
+        android:layout_marginLeft="2dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:text="SDFDS"/>
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="2dp"
+        android:textSize="14sp" />
 
     <LinearLayout
+        android:id="@+id/ll_likes_retweets"
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:orientation="horizontal"
-        android:layout_below="@+id/tweet_content"
         android:layout_toRightOf="@id/profile_pic"
-        android:paddingLeft="10dp">
+        android:paddingLeft="10dp"
+        android:layout_alignParentBottom="true">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -55,4 +71,16 @@
             android:textSize="14sp"
             android:layout_marginLeft="4dp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tweet_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        android:textSize="20sp"
+        android:layout_toRightOf="@id/profile_pic"
+        android:layout_below="@id/tv_name"
+        android:layout_above="@id/ll_likes_retweets"
+        android:text="THIS IS A TEST"/>
+
 </RelativeLayout>

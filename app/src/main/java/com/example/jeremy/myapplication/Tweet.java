@@ -1,5 +1,6 @@
 package com.example.jeremy.myapplication;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,6 +26,10 @@ public class Tweet {
         mLikeCount = likeCount;
         mDate = date;
         mProfilePictureUrl = profilePicURL;
+    }
+
+    public String getFormattedDate() {
+        return new SimpleDateFormat("M-d-yyyy").format(mDate) + " at " + new SimpleDateFormat("h:mm a").format(mDate);
     }
 
     //Gets the ranking of a Tweet based on the mDate, mLikeCount, and mRetweetCount. Max rank of 10. 10 good :)

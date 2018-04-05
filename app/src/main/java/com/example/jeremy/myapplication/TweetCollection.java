@@ -27,6 +27,8 @@ public class TweetCollection {
     //returns a list of all tweets from filtered users
     public ArrayList<Tweet> getFilteredTweets() {
         ArrayList<User> filteredUsers = mUserCollection.getFilteredUsers();
+
+        mTweets = new ArrayList<>();
         for (int i = 0; i < filteredUsers.size(); i++) {
             ArrayList<Tweet> tweets = TwitterClient.getTweets(filteredUsers.get(i).getHandle());
             if (tweets != null) {
