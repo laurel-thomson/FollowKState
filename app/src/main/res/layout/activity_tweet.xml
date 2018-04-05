@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center">
 
     <ImageView
         android:id="@+id/iv_profilePic"
-        android:layout_width="174dp"
-        android:layout_height="142dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="48dp" />
+        android:layout_marginTop="48dp"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true" />
 
     <TextView
         android:id="@+id/tv_handle"
@@ -58,5 +61,12 @@
             android:layout_marginLeft="4dp" />
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_tweetPic"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:adjustViewBounds="true" />
 
 </LinearLayout>
