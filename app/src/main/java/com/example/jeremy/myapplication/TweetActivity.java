@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 public class TweetActivity extends AppCompatActivity {
 
     private ImageView mProfilePic_IV;
+    private ImageView mTweetPic_IV;
     private TextView mHandle_TV;
     private TextView mTweet_TV;
     private TextView mRetweets_TV;
@@ -34,12 +35,20 @@ public class TweetActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int position = intent.getIntExtra("tweetPosition",0);
         Tweet tweet = mTweetCollection.getTweet(position);
+        getSupportActionBar().setTitle(tweet.mName + "'s Tweet");
 
 
         mProfilePic_IV = findViewById(R.id.iv_profilePic);
         Picasso.with(this)
                 .load(tweet.mProfilePictureUrl)
                 .into(mProfilePic_IV);
+
+        mTweetPic_IV = findViewById(R.id.iv_tweetPic);
+        if (!tweet.getTweetImageUrl().equals("")) {
+            Picasso.with(this)
+                    .load(tweet.getTweetImageUrl())
+                    .into(mTweetPic_IV);
+        }
 
         mHandle_TV = findViewById(R.id.tv_handle);
         mHandle_TV.setText(tweet.mHandle);

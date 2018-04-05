@@ -14,7 +14,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-//TODO : this will need to be a RecycleView
     public class TweetAdapter extends ArrayAdapter<Tweet>
 {
 
@@ -34,7 +33,6 @@ import java.util.List;
         // Check if an existing view is being reused, otherwise inflate the view
         if (convertView == null) {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.tweet_list_item, parent, false);
-
         }
 
         ImageView profilePic = convertView.findViewById(R.id.profile_pic);

@@ -36,7 +36,6 @@ public class UserCollection {
     return sSoleInstance;
     }
 
-    //TODO: Sort users alphabetically
     private void populateUsers() {
         try {
             mUsers = new ArrayList<>();

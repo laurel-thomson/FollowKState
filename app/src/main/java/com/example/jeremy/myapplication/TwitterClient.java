@@ -54,9 +54,19 @@ public class TwitterClient {
                     Date date = (Date)fmt.parse(tweetObj.get("created_at").toString());
                     String profilePicURL = ((JSONObject)tweetObj.get("user")).get("profile_image_url").toString();
 
+                    JSONArray media = (JSONArray) ((JSONObject) tweetObj.get("entities")).get("media");
+                    String tweetImageURL;
+                    if (media != null)
+                    {
+                        JSONObject mediaFirstEntry = (JSONObject) media.get(0);
+                        tweetImageURL = mediaFirstEntry.get("media_url").toString();
+                    }
+                    else {
+                        tweetImageURL = "";
+                    }
 
                     tweets.add(new Tweet(name, handle, text, retweetCount,
-                            isRetweet, likeCount, date, profilePicURL));
+                            isRetweet, likeCount, date, profilePicURL,tweetImageURL));
                 }
 
                 return tweets;

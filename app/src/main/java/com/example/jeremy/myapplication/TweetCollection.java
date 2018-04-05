@@ -1,6 +1,7 @@
 package com.example.jeremy.myapplication;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Created by laurel on 3/22/18.
@@ -37,6 +38,7 @@ public class TweetCollection {
                 }
             }
         }
+        Collections.sort(mTweets);
         return mTweets;
     }
 
@@ -45,5 +47,4 @@ public class TweetCollection {
         return mTweets.get(position);
     }
 
-    //TODO : add in method to sort the tweets by rank
 }

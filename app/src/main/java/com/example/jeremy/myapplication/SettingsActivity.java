@@ -20,13 +20,13 @@ public class SettingsActivity extends AppCompatActivity {
 
         // Add back button to action bar (implementation below in onOptionsItemSelected)
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle("Users Following");
 
         //get the list of all users (hard coded into UserCollection and display it in this activity)
         mUserCollection = UserCollection.getInstance();
         ListView userLV = findViewById(R.id.settings_listview);
         UserAdapter adapter = new UserAdapter(this, R.layout.user_item_layout, mUserCollection.getAllUsers());
         userLV.setAdapter(adapter);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
