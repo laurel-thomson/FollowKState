@@ -14,9 +14,4 @@
         app:showAsAction="never"
         android:title="Accounts Following..." />
 
-    <item
-        android:id="@+id/mi_exit"
-        app:showAsAction="never"
-        android:title="Close App" />
-
 </menu>

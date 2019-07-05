@@ -49,11 +49,18 @@ import java.util.List;
         TextView tweetContent = convertView.findViewById(R.id.tweet_content);
         tweetContent.setText(tweet.mText);
 
+        if (tweet.getTweetImageUrl() != null && !tweet.getTweetImageUrl().equals("")) {
+            ImageView tweetPic = convertView.findViewById(R.id.iv_tweetPic);
+            Picasso.with(mContext)
+                    .load(tweet.getTweetImageUrl())
+                    .into(tweetPic);
+        }
+
         TextView numRetweets = convertView.findViewById(R.id.tv_retweets);
-        numRetweets.setText("" + tweet.mRetweetCount);
+        numRetweets.setText("Retweets: " + tweet.mRetweetCount);
 
         TextView numLikes = convertView.findViewById(R.id.tv_likes);
-        numLikes.setText("" + tweet.mLikeCount);
+        numLikes.setText("Likes: " + tweet.mLikeCount);
 
         return convertView;
 

@@ -56,15 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
                 TweetAdapter adapter = new TweetAdapter(this, 0, mTweets);
                 tweetLV.setAdapter(adapter);
-
-                tweetLV.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                    @Override
-                    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                        Intent intent = new Intent(MainActivity.this, TweetActivity.class);
-                        intent.putExtra("tweetPosition", i);
-                        startActivity(intent);
-                    }
-                });
         }
     }
 
@@ -117,9 +108,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.mi_accounts:
                 Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
                 startActivity(intent);
-                return true;
-            case R.id.mi_exit:
-                finish();
                 return true;
         }
         return(super.onOptionsItemSelected(item));
