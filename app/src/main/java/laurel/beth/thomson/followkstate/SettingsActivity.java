@@ -1,4 +1,4 @@
-package laurel.beth.thomson.kstatetwitter;
+package laurel.beth.thomson.followkstate;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

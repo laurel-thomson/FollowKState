@@ -1,4 +1,4 @@
-package laurel.beth.thomson.kstatetwitter;
+package laurel.beth.thomson.followkstate;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;

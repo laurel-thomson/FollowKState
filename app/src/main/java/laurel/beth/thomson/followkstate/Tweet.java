@@ -1,4 +1,4 @@
-package laurel.beth.thomson.kstatetwitter;
+package laurel.beth.thomson.followkstate;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

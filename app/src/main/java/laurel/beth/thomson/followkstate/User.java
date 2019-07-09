@@ -1,4 +1,4 @@
-package laurel.beth.thomson.kstatetwitter;
+package laurel.beth.thomson.followkstate;
 
 /**
  * Created by laurel on 3/15/18.
