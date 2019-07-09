@@ -1,4 +1,4 @@
-package com.example.jeremy.myapplication;
+package laurel.beth.thomson.kstatetwitter;
 
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;

@@ -1,4 +1,4 @@
-package com.example.jeremy.myapplication;
+package laurel.beth.thomson.kstatetwitter;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,8 +9,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 

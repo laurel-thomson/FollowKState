@@ -1,4 +1,4 @@
-package com.example.jeremy.myapplication;
+package laurel.beth.thomson.kstatetwitter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

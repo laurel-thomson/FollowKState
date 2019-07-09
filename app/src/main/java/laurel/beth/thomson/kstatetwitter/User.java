@@ -1,4 +1,4 @@
-package com.example.jeremy.myapplication;
+package laurel.beth.thomson.kstatetwitter;
 
 /**
  * Created by laurel on 3/15/18.

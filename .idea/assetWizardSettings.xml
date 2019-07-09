@@ -50,7 +50,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="49" />
+                                                <entry key="scalingPercent" value="51" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -63,7 +63,7 @@
                                             <option name="values">
                                               <map>
                                                 <entry key="color" value="000000" />
-                                                <entry key="trimmed" value="true" />
+                                                <entry key="scalingPercent" value="0" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -75,6 +75,9 @@
                                     <map>
                                       <entry key="backgroundImage" value="C:\Users\laure\OneDrive\AndroidImages\twitter notifier logo.png" />
                                       <entry key="foregroundImage" value="C:\Users\laure\OneDrive\AndroidImages\background.png" />
+                                      <entry key="generateRoundIcon" value="false" />
+                                      <entry key="legacyIconShape" value="NONE" />
+                                      <entry key="webIconShape" value="NONE" />
                                     </map>
                                   </option>
                                 </PersistentState>

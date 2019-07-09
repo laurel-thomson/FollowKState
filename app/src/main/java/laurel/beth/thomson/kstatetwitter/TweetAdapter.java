@@ -1,4 +1,4 @@
-package com.example.jeremy.myapplication;
+package laurel.beth.thomson.kstatetwitter;
 
 import android.content.Context;
 import android.support.annotation.LayoutRes;
@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
